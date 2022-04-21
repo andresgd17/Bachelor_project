@@ -1,0 +1,81 @@
+conex2r7.50
+===========
+
+  In the root file "Header" tree, branches are :
+    "Seed1" : random seed1
+    "Particle" : particle ID
+    "Alpha"    : spectral index
+    "lgEmin"   : log10 of the minimum energy in eV
+    "lgEmax"   : log10 of the maximum energy in eV
+    "zMin"     : minimum zenith angle in degree
+    "zMax"     : maximum zenith angle in degree
+    "SVNRevision"  : svn revision
+    "Version"  : conex version
+    "OutputVersion"  : cxroot output version
+    "HEModel"  : High Energy interaction model flag
+                 (2=QGSJET01, 4=EPOS LHC, 5=SIBYLL 2.3d, 6=QGSJETII-04)
+    "LEModel"  : Low Energy (E < HiLowEgy GeV) model flag (3=GHEISHA, 8=URQMD 1.3.1)
+    "HiLowEgy" : Transition energy from low to high hadronic interaction model (80 GeV) 
+    "hadCut"   : hadron and muon cutoff (minimum energy) for charged particle profiles
+    "emCut"    : e/m particles cutoff for charged particle profiles
+                 (minimum energy for electrons, positrons and gammas)
+    "hadThr"   : Emax(CE)/Emax(MC) for hadrons (threshold)
+    "muThr"    : Emax(CE)/Emax(MC) for muon (threshold)
+    "emThr"    : Emax(CE)/Emax(MC) for e/m particles (threshold)
+    "haCut"    : cutoff for hadron profile
+    "muCut"    : cutoff for muons profile
+    "elCut"    : cutoff for electron+positron profile
+    "gaCut"    : cutoff for photon profile
+
+    "lambdaProton" : proton-air interaction length [g/cm^2]
+    "lambdaPion" : pion-air interaction length [g/cm^2]
+    "lambdaHelium" : He-air interaction length [g/cm^2]
+    "lambdaNitrogen" : N-air interaction length [g/cm^2]
+    "lambdaIron" : Fe-air interaction length [g/cm^2]
+    all as a function of energy, "lambdaLgE"
+
+  For each generated shower, branches in "Shower" tree are :
+  > parameters :
+    "lgE"      : log10 of the primary energy in eV
+    "zenith"   : zenith angle in degree
+    "azimuth"  : azimuth angle in degree (0 = East)
+    "Seed2"    : random seed2 (number of random number generator calls
+                 below 1 billion)
+    "Seed3"    : random seed3 (number of billions of random number
+                 generator calls)
+    "XfirstIn" : inelasticity of first interaction ([0,1])
+    "Xfirst"   : real first interaction point in slant depth (g/cm^2)
+    "Hfirst"   : altitude of real first interaction point (m)
+    "altitude" : altitude of impact parameter [m]
+    "X0"       : "pseudo" first interaction point for GH fit
+    "Xmax"     : GH fit result for slant depth of the shower maximum (g/cm^2)
+    "Nmax"     : Number of charged particles above cut-off at the shower maximum
+    "p1"       : first parameter for the polynomial function of the GH fit
+    "p2"       : second parameter for the polynomial function of the GH fit
+    "p3"       : third parameter for the polynomial function of the GH fit
+    "chi2"     : Chi squared / number of degree of freedom / sqrt (Nmax) for the fit
+                 (small number not realistic because it's divided by sqrt (Nmax) )
+    "Xmx"      : X-position of maximum of quadratic fit of N(X) profile [g/cm^2]
+    "Nmx"      : Maximum of quadratic fit on N(X) profile
+    "XmxdEdX"  : X-position of maximum of quadratic fit of dE/dX(X) profile [g/cm^2]
+    "dEdXmx"   : Maximum of quadratic fit on dE/dX(X) profile [GeV/(g/cm^2)]
+    "cpuTime"  : CPU time to calculate this shower [s]
+
+  > profiles :
+    "nX"       : number of points of "X", "N", "H", "D", "dEdX", "Mu", "dMu",
+                 "Hadrons", "Gamma", and "Electrons" array
+    "X"        : slant depth array (g/cm^2)
+    "H"        : height array      (m)
+    "D"        : distance array    (m)
+    "N"        : array of number of charged particles above "hadCut" and "emCut" cut-off
+                 crossing each X plane
+    "dEdX"     : array of energy deposit (GeV/(g/cm^2)) in the MIDDLE of
+                 each X bin, i.e. dE/dX[i] correspond to (X[i]+X[i+1])/2
+    "Mu"       : array of number of muons above "muCut" cut-off crossing each X plane
+    "dMu"      : array of number of muons produce above cut-off in each bin
+    "Electrons": array of number of e^+ + e^- above "elCut" cut-off crossing each X plane
+    "Gamma"    : array of number of gammas above "gaCut" cut-off crossing each X plane
+    "Hadrons"  : array of number of hadrons above "haCut" cut-off crossing each X plane
+    "EGround"  : Energy of particles at maximum X (EGround[0]=e+gamma;
+                 EGround[1]=hadrons; EGround[2]=muons)
+
